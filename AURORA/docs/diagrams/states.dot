@@ -1,0 +1,16 @@
+digraph G {
+ graph [label="SƠ ĐỒ TRẠNG THÁI AUCTION",labelloc=t,fontname="DejaVu Sans",fontsize=22,bgcolor="#0e1928",fontcolor="#f7ebdb",pad=".45",ranksep=".85",nodesep=".5",splines=true];
+ node [shape=box,style="rounded,filled",fontname="DejaVu Sans",fontsize=14,margin=".27,.2",color="#72889b",fillcolor="#31445c",fontcolor="#f6f8fc",penwidth=2];
+ edge [fontname="DejaVu Sans",fontcolor="#ffdab9",fontsize=11,color="#f8a374",penwidth=2,arrowsize=.75];
+ OPEN [label="OPEN\nChờ bắt đầu",fillcolor="#534839"];
+ RUNNING [label="RUNNING\nĐang nhận bid",fillcolor="#37676a"];
+ FINISHED [label="FINISHED\nKhóa bid, xác định winner",fillcolor="#465b79"];
+ PAID [label="PAID\nĐã xác nhận thanh toán",fillcolor="#3d6556"];
+ CANCELED [label="CANCELED\nDừng phiên",fillcolor="#754d50"];
+ OPEN -> RUNNING [label="startTime ≤ now"];
+ RUNNING -> FINISHED [label="endTime ≤ now"];
+ FINISHED -> PAID [label="seller/admin xác nhận\nvà có winner"];
+ OPEN -> CANCELED [label="hủy hợp lệ"];
+ RUNNING -> CANCELED [label="admin hoặc seller\nnếu chưa có bid"];
+ FINISHED -> CANCELED [label="admin hoặc seller\nnếu chưa có bid",constraint=false];
+}

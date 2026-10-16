@@ -1,0 +1,19 @@
+digraph G {
+ graph [label="SƠ ĐỒ LỚP • KẾ THỪA & COMPOSITION",labelloc=t,fontname="DejaVu Sans",fontsize=21,bgcolor="#0e1928",fontcolor="#f7ebdb",pad=".4",ranksep=".8",nodesep=".38",splines=polyline];
+ node [shape=record,style="filled",fillcolor="#21364c",color="#6a899d",penwidth=1.5,fontname="DejaVu Sans",fontcolor="#edf1f7",fontsize=10,margin=".19,.14"];
+ edge [color="#ffa979",penwidth=1.5,arrowsize=.9];
+ Entity [label="{«abstract» Entity| - id : long|+ getId() : long\l+ summary() : String\l}",fillcolor="#815746"];
+ User [label="{«abstract» User|- username : String\l- passwordHash : String\l- salt : String\l|+ role() : String\l}"];
+ Item [label="{«abstract» Item|- title : String\l- description : String\l|+ category() : String\l+ edit() : void\l}"];
+ Bidder [label="{Bidder|+ role() : BIDDER}"];Seller [label="{Seller|+ role() : SELLER}"];Admin [label="{Admin|+ role() : ADMIN}"];
+ Electronics [label="{Electronics|+ category()}"];Art [label="{Art|+ category()}"];Vehicle [label="{Vehicle|+ category()}"];
+ Auction [label="{Auction|- sellerId : long\l- item : Item\l- currentPrice : long\l- endTime : long\l- leaderId : Long\l- status : Status\l- history : List\l}",fillcolor="#355c66"];
+ Bid [label="{BidTransaction|- bidderId : long\l- amount : long\l- automatic : boolean\l}"];Auto [label="{AutoBid|- bidderId : long\l- maxAmount : long\l- increment : long\l}"];
+ User -> Entity [arrowhead=empty];Item -> Entity [arrowhead=empty];Bid -> Entity [arrowhead=empty];Auction -> Entity [arrowhead=empty];
+ Bidder -> User [arrowhead=empty];Seller -> User [arrowhead=empty];Admin -> User [arrowhead=empty];
+ Electronics -> Item [arrowhead=empty];Art -> Item [arrowhead=empty];Vehicle -> Item [arrowhead=empty];
+ Auction -> Item [dir=back,arrowtail=diamond,arrowhead=none,color="#a1d9db",label="1:1"];
+ Auction -> Bid [dir=back,arrowtail=diamond,arrowhead=none,color="#a1d9db",constraint=false,label="1:N"];
+ Auction -> Auto [dir=back,arrowtail=diamond,arrowhead=none,color="#a1d9db",label="1:N"];
+ {rank=same; User;Item;Auction;Bid;}
+}

@@ -1,0 +1,13 @@
+digraph G {
+ graph [label="MÔ HÌNH MVC • CONTROLLER – MODEL – DAO",labelloc=t,fontsize=21,fontname="DejaVu Sans",bgcolor="#0e1928",fontcolor="#f4eede",pad=".5",ranksep=".8",nodesep=".7"];
+ node [shape=box,style="rounded,filled",fontname="DejaVu Sans",fontsize=13,margin=".22,.18",color="#53758a",fillcolor="#1d344b",fontcolor="#f0f3fa",penwidth=2];
+ edge [color="#ffa474",penwidth=2,arrowsize=.7,fontcolor="#fff6ec",fontname="DejaVu Sans"];
+ view [label="VIEW\nHTML/CSS  |  JavaFX FXML",fillcolor="#2b596a"];
+ clientc [label="CLIENT CONTROLLER\napp.js  |  DashboardController",fillcolor="#39636a"];
+ clientmodel [label="CLIENT MODEL / GATEWAY\nfetch API  |  ApiClient",fillcolor="#505d70"];
+ serverc [label="SERVER CONTROLLER\nApiServer • JSON • Authentication",fillcolor="#775142"];
+ model [label="SERVER MODEL / SERVICE\nAuctionService • Auction • BidTransaction",fillcolor="#995f46"];
+ dao [label="DAO / REPOSITORY\nFileRepository  |  SqliteRepository",fillcolor="#546a5e"];
+ storage [label="SERVER-ONLY PERSISTENCE\nSerialized file  |  SQLite",fillcolor="#40555f"];
+ view -> clientc [label="events"];clientc -> clientmodel;clientmodel -> serverc [label="HTTP JSON"];serverc -> model [label="invoke"];model -> dao [label="transaction"];dao -> storage;
+}

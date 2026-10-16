@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1521" />
+  <meta name="description" content="UET Auction — hệ thống đấu giá realtime, công bằng, minh bạch." />
+  <title>AURORA — Sàn đấu giá trực tuyến</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="nav-shell">
+    <nav class="nav container">
+      <a href="#home" class="brand"><span class="brand-mark">✦</span><span>AURORA<span class="brand-dot">.</span></span></a>
+      <div class="nav-links"><a href="#auctions" class="active">Khám phá</a><a href="#why">Cách hoạt động</a><a href="#about">Về dự án</a></div>
+      <div class="user-area" id="userArea"><button class="btn btn-soft" id="openLogin">Đăng nhập</button><button class="btn btn-primary" id="openRegister">Tạo tài khoản <span>↗</span></button></div>
+    </nav>
+  </header>
+  <main id="home">
+    <section class="hero container">
+      <div class="hero-copy"><div class="eyebrow"><span class="pulse-dot"></span> NỀN TẢNG ĐẤU GIÁ THỜI GIAN THỰC <span class="eyebrow-line"></span></div>
+        <h1>Giá trị đích thực.<br/><span>Được quyết định</span><br/>bởi chính bạn.</h1>
+        <p>Khám phá những món đồ độc đáo, tham gia trả giá cùng cộng đồng và giành chiến thắng trong từng khoảnh khắc.</p>
+        <div class="hero-actions"><a href="#auctions" class="btn btn-primary btn-lg">Khám phá phiên đấu giá <span>↗</span></a><button id="heroCreate" class="btn btn-outline btn-lg">+ Tạo phiên mới</button></div>
+        <div class="hero-proof"><div class="avatars"><b>AN</b><b>LM</b><b>KH</b><b>+</b></div><div><strong>MINH BẠCH • REALTIME</strong><small>Giá đấu cập nhật trực tiếp từ máy chủ</small></div></div>
+      </div>
+      <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-glow"></div><div class="hero-center"><span class="star star-a">✧</span><span class="hero-illustration">♛</span><span class="star star-b">✦</span></div><div class="floating-badge top-badge"><span>◉</span><div><small>LIVE BIDDING</small><strong>Đấu giá trực tiếp</strong></div></div><div class="floating-badge bottom-badge"><span>↗</span><div><small>MINH BẠCH</small><strong>Giá được xác thực</strong></div></div><div class="art-label">THE ART OF<br/><strong>THE BID.</strong></div></div>
+    </section>
+    <section class="stats-strip"><div class="container stats-grid"><div><strong id="statAuctions">0</strong><span>Phiên đấu giá</span></div><div><strong id="statLive">0</strong><span>Đang diễn ra</span></div><div><strong id="statBids">0</strong><span>Lượt đặt giá</span></div><div><strong>24/7</strong><span>Theo dõi thời gian thực</span></div></div></section>
+    <section class="listings container" id="auctions">
+      <div class="section-top"><div><div class="eyebrow orange">BỘ SƯU TẬP ĐANG MỞ</div><h2>Khám phá <em>phiên đấu giá</em></h2><p>Từ công nghệ hiện đại đến những tác phẩm đặc biệt — nơi mọi mức giá đều có ý nghĩa.</p></div><button class="btn btn-soft" id="refreshBtn">↻ Cập nhật</button></div>
+      <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Tìm sản phẩm, người bán..." autocomplete="off"></div><div class="filter-group" id="statusFilters"><button class="chip active" data-status="ALL">Tất cả</button><button class="chip" data-status="RUNNING">● Đang diễn ra</button><button class="chip" data-status="OPEN">Sắp mở</button><button class="chip" data-status="FINISHED">Đã kết thúc</button></div><select class="category-select" id="category"><option value="ALL">Mọi danh mục</option><option value="ELECTRONICS">Công nghệ</option><option value="ART">Nghệ thuật</option><option value="VEHICLE">Xe cộ</option></select></div>
+      <div class="auction-grid" id="auctionGrid"><div class="empty">Đang tải danh sách...</div></div>
+    </section>
+    <section class="how-area" id="why"><div class="container"><div class="section-center"><div class="eyebrow orange">ĐƠN GIẢN TRONG 3 BƯỚC</div><h2>Hành trình đến <em>chiến thắng</em></h2><p>Mọi quy trình đều rõ ràng, minh bạch và diễn ra trực tiếp.</p></div><div class="how-grid"><div><span>01 <i>→</i></span><div class="step-icon">◈</div><h3>Tạo tài khoản</h3><p>Đăng ký Bidder để tham gia trả giá, Seller để tạo phiên đấu giá của riêng bạn.</p></div><div><span>02 <i>→</i></span><div class="step-icon">⌁</div><h3>Đặt giá trực tiếp</h3><p>Theo dõi từng biến động; sử dụng tự động đặt giá và nhận thông báo tức thì.</p></div><div><span>03 <i>✓</i></span><div class="step-icon">✧</div><h3>Giành chiến thắng</h3><p>Khi thời gian kết thúc, hệ thống tự xác định tài khoản dẫn đầu duy nhất.</p></div></div></div></section>
+    <section class="footer-cta container" id="about"><div><div class="eyebrow">BÀI TẬP LỚN • UET.CS2043</div><h2>Khởi đầu hành trình<br/><em>đấu giá của bạn.</em></h2><p>Hệ thống minh họa kiến trúc Client–Server, MVC, OOP, concurrency và realtime Observer.</p></div><a href="#auctions" class="btn btn-primary btn-lg">Khám phá ngay ↗</a></section>
+  </main>
+  <footer><div class="container footer-content"><div class="brand"><span class="brand-mark">✦</span> AURORA<span class="brand-dot">.</span></div><span>© 2026 UET Advanced Programming • Educational project</span><span>Made for learning, built with Java</span></div></footer>
+  <div id="modalLayer" class="modal-layer" hidden><div class="modal-backdrop" data-close="true"></div><div class="modal" role="dialog" aria-modal="true" aria-label="Thao tác đấu giá"><button class="modal-close" data-close="true" aria-label="Đóng">×</button><div id="modalBody"></div></div></div>
+  <div class="toast-area" id="toasts" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
