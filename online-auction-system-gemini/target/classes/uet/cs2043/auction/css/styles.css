@@ -1,0 +1,60 @@
+.root-pane {
+    -fx-background-color: #f4f6f9;
+}
+.header-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a365d;
+}
+.sub-header-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #718096;
+}
+.top-bar {
+    -fx-background-color: #2b6cb0;
+}
+.item-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.price-highlight {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #feebc8;
+}
+.winner-highlight, .time-highlight {
+    -fx-font-size: 14px;
+    -fx-text-fill: #e2e8f0;
+}
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2d3748;
+}
+.panel-box {
+    -fx-background-color: #edf2f7;
+    -fx-padding: 12px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #cbd5e0;
+    -fx-border-radius: 8px;
+}
+.panel-title {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2b6cb0;
+}
+.primary-btn {
+    -fx-background-color: #3182ce;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.bid-btn {
+    -fx-background-color: #e53e3e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.autobid-btn {
+    -fx-background-color: #38a169;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
