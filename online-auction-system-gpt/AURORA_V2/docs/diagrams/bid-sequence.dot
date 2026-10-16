@@ -1,0 +1,14 @@
+digraph G {
+ graph [label="SEQUENCE • MỘT GIAO DỊCH ĐẶT GIÁ",labelloc=t,fontname="DejaVu Sans",fontsize=20,bgcolor="#0e1928",fontcolor="#f7ebdb",pad=".45",ranksep=".45"];
+ node [shape=box,style="rounded,filled",fontname="DejaVu Sans",fontsize=12,margin=".2,.15",fillcolor="#203c52",fontcolor="#f0f5fc",color="#567f92"];
+ edge [color="#ffa979",fontname="DejaVu Sans",fontcolor="#f7d7bf",fontsize=10,arrowsize=.7,penwidth=1.5];
+ n1 [label="1. BIDDER CLIENT\nNhập 11.000.000 VND"];
+ n2 [label="2. HTTP CONTROLLER\nPOST /api/auctions/42/bid"];
+ n3 [label="3. SERVICE\nKiểm tra token, role, status, amount"];
+ n4 [label="4. LOCK + COPY\nsynchronized → snapshot clone",fillcolor="#654b46"];
+ n5 [label="5. MODEL\nAppend BidTransaction → price/leader",fillcolor="#805640"];
+ n6 [label="6. DAO\nAtomic file / SQLite transaction",fillcolor="#51644c"];
+ n7 [label="7. PUBLISH\nstate=copy → Observer event",fillcolor="#516258"];
+ n8 [label="8. ALL CLIENTS\nSSE message → GET snapshot → GUI/Chart",fillcolor="#275767"];
+ n1->n2->n3->n4->n5->n6->n7->n8;
+}

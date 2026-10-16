@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="vn.uet.auction.client.DashboardController" styleClass="root-frame">
+  <top><VBox><HBox alignment="CENTER_LEFT" spacing="16" styleClass="navbar">
+    <Label text="✦ AURORA." styleClass="logo"/><Label text="Online Auction · UET.CS2043" styleClass="subtitle"/>
+    <Region HBox.hgrow="ALWAYS"/><Label fx:id="currentUser" text="Chưa đăng nhập" styleClass="subtitle"/><Button text="Đăng xuất" onAction="#logout" styleClass="secondary"/>
+  </HBox><HBox spacing="10" alignment="CENTER_LEFT" styleClass="authbar"><Label text="Tài khoản"/><TextField fx:id="username" promptText="Tên đăng nhập" prefWidth="135"/><PasswordField fx:id="password" promptText="Mật khẩu" prefWidth="135"/><ComboBox fx:id="role" prefWidth="110"/><Button text="Đăng ký" onAction="#register" styleClass="secondary"/><Button text="Đăng nhập" onAction="#login"/><Region HBox.hgrow="ALWAYS"/><Button text="↻ Tải lại" onAction="#refresh" styleClass="secondary"/></HBox></VBox></top>
+  <center><SplitPane dividerPositions="0.46"><items>
+    <VBox spacing="12" styleClass="panel"><Label text="PHIÊN ĐẤU GIÁ" styleClass="caption"/><Label text="Sàn đấu giá trực tiếp" styleClass="h1"/><TableView fx:id="auctionsTable" VBox.vgrow="ALWAYS"><columns>
+      <TableColumn fx:id="idColumn" text="ID" prefWidth="55"/><TableColumn fx:id="titleColumn" text="Sản phẩm" prefWidth="175"/><TableColumn fx:id="priceColumn" text="Giá hiện tại" prefWidth="125"/><TableColumn fx:id="statusColumn" text="Trạng thái" prefWidth="105"/>
+    </columns></TableView><Label fx:id="notification" text="Sẵn sàng kết nối máy chủ" wrapText="true" styleClass="subtitle"/></VBox>
+    <ScrollPane fitToWidth="true"><content><VBox spacing="14" styleClass="panel"><Label text="CHI TIẾT PHIÊN" styleClass="caption"/><Label fx:id="itemTitle" text="Hãy chọn một sản phẩm" styleClass="h1" wrapText="true"/><Label fx:id="description" text="Thông tin phiên sẽ xuất hiện tại đây" wrapText="true" styleClass="subtitle"/><Label fx:id="priceLabel" text="—" styleClass="price"/><Label fx:id="auctionMeta" wrapText="true" styleClass="subtitle"/>
+      <Separator/><Label text="ĐẤU GIÁ TRỰC TIẾP" styleClass="caption"/><HBox spacing="7"><TextField fx:id="bidAmount" promptText="Giá đặt (VND)" HBox.hgrow="ALWAYS"/><Button text="ĐẶT GIÁ" onAction="#bid"/></HBox>
+      <HBox spacing="7"><TextField fx:id="maxBid" promptText="Giá tối đa" HBox.hgrow="ALWAYS"/><TextField fx:id="increment" promptText="Bước giá" prefWidth="110"/><Button text="Auto-bid" onAction="#autoBid" styleClass="secondary"/></HBox>
+      <Separator/><Label text="BIẾN ĐỘNG GIÁ" styleClass="caption"/><LineChart fx:id="chart" animated="false" createSymbols="true" legendVisible="false" prefHeight="235"><xAxis><CategoryAxis label="Thời gian"/></xAxis><yAxis><NumberAxis label="VND"/></yAxis></LineChart>
+      <Label text="LỊCH SỬ ĐẤU GIÁ" styleClass="caption"/><ListView fx:id="bidHistory" prefHeight="160"/>
+      <Separator/><Label text="QUẢN LÝ SELLER / ADMIN" styleClass="caption"/><TextField fx:id="editTitle" promptText="Tên sản phẩm (để chỉnh sửa)"/><TextArea fx:id="editDescription" prefRowCount="2" promptText="Mô tả sản phẩm"/><HBox spacing="8"><Button text="Lưu sửa" onAction="#edit" styleClass="secondary"/><Button text="Xóa" onAction="#delete" styleClass="danger"/><Button text="Hủy phiên" onAction="#cancel" styleClass="danger"/><Button text="Đã thanh toán" onAction="#pay" styleClass="secondary"/></HBox>
+    </VBox></content></ScrollPane>
+  </items></SplitPane></center>
+  <bottom><VBox spacing="9" styleClass="createbar"><Label text="TẠO PHIÊN MỚI · SELLER" styleClass="caption"/><HBox spacing="9" alignment="CENTER_LEFT"><ComboBox fx:id="newCategory" prefWidth="135"/><TextField fx:id="newTitle" promptText="Tên sản phẩm" HBox.hgrow="ALWAYS"/><TextField fx:id="newDescription" promptText="Mô tả" HBox.hgrow="ALWAYS"/><TextField fx:id="newPrice" promptText="Giá khởi điểm" prefWidth="135"/><TextField fx:id="newMinutes" promptText="Thời lượng (phút)" prefWidth="135"/><Button text="+ Đăng" onAction="#create"/></HBox></VBox></bottom>
+</BorderPane>

@@ -1,0 +1,15 @@
+digraph G {
+ graph [label="ATOMIC TRANSACTION • ĐẶT GIÁ AN TOÀN",labelloc=t,fontname="DejaVu Sans",fontsize=21,bgcolor="#0e1928",fontcolor="#f9ebdf",pad=".45",ranksep=".55",nodesep=".65"];
+ node [shape=box,style="rounded,filled",fontname="DejaVu Sans",fontsize=13,margin=".25,.18",fillcolor="#254258",color="#638398",fontcolor="#eff7ff",penwidth=2];
+ edge [color="#ffc09c",fontname="DejaVu Sans",fontcolor="#fff3df",fontsize=11,penwidth=1.5];
+ A [label="1. synchronized\nGiữ khóa service"];
+ B [label="2. Deep Copy\nState mới độc lập"];
+ C [label="3. Validate & Mutate\nNhận bid hợp lệ?",shape=diamond,fillcolor="#634a48"];
+ D [label="4. Repository.save(copy)\nDurable Commit",fillcolor="#57664c"];
+ E [label="5. state = copy\nPublish snapshot",fillcolor="#53664f"];
+ F [label="6. Observer → SSE\nThông báo mọi client",fillcolor="#315a6b"];
+ X [label="ROLLBACK\nGiữ state cũ\nHTTP 4xx / 500",fillcolor="#753c43"];
+ A->B->C;C->D [label="PASS"];C->X [label="FAIL",color="#f56f7f"];
+ D->E [label="save OK"];D->X [label="IO failure",color="#f56f7f"];
+ E->F;
+}

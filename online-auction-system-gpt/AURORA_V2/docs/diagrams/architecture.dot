@@ -1,0 +1,17 @@
+digraph G {
+ graph [label="AURORA • KIẾN TRÚC CLIENT–SERVER",labelloc=t,fontsize=23,fontname="DejaVu Sans",fontcolor="#eaf2fc",bgcolor="#0e1928",pad="0.45",ranksep="1.1",nodesep="0.65",splines=ortho];
+ node [shape=box,style="rounded,filled",penwidth=1.7,fontname="DejaVu Sans",fontsize=12,margin=".24,.18",fontcolor="#edf3f9",color="#405a75",fillcolor="#1f3249"];
+ edge [color="#ffc39b",penwidth=1.8,fontname="DejaVu Sans",fontcolor="#e2f2fb",fontsize=10,arrowsize=.8];
+ {rank=same; web [label="🌐 BROWSER CLIENT\nHTML / CSS / JavaScript\nEventSource (SSE)",fillcolor="#275267"]; fx [label="☕ JAVAFX CLIENT\nFXML / Controller / LineChart\nHTTP + SSE",fillcolor="#295f6c"];}
+ rest [label="REST CONTROLLER\nApiServer.java\nHTTP + JSON + Bearer Auth",fillcolor="#6b4b46",color="#f89c6d"];
+ business [label="AUCTION SERVICE\nBusiness Rules + synchronized\nCopy → Validate → Save → Publish",fillcolor="#995c41",color="#ffb37d"];
+ observer [label="OBSERVER / SSE HUB\nQueue per Client + Broadcast",fillcolor="#4d435c"];
+ dao [label="REPOSITORY / DAO\nPersistent Snapshot",fillcolor="#3f5658"];
+ {rank=same; file [label="FILE STORAGE\nJava Serialization\nAtomic Rename"]; sql [label="SQLITE JDBC\nSingle Snapshot BLOB\nPreparedStatement"];}
+ web -> rest [label="REST JSON"]; fx -> rest [label="REST JSON"];
+ rest -> business [label="invoke"];
+ business -> dao [label="persist"];
+ dao -> file; dao -> sql;
+ business -> observer [label="after commit"];
+ observer -> web [label="push SSE",constraint=false]; observer -> fx [label="push SSE",constraint=false];
+}
