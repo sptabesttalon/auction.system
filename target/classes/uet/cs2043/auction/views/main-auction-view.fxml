@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="uet.cs2043.auction.client.controllers.MainAuctionController"
+            stylesheets="@../css/styles.css">
+    <top>
+        <VBox spacing="5" styleClass="top-bar">
+            <padding><Insets top="15" right="20" bottom="15" left="20"/></padding>
+            <Label fx:id="lblItemName" text="Đang tải phiên đấu giá..." styleClass="item-title"/>
+            <HBox spacing="30">
+                <Label fx:id="lblCurrentPrice" text="Giá hiện tại: 0 VNĐ" styleClass="price-highlight"/>
+                <Label fx:id="lblWinner" text="Dẫn đầu: Chưa có" styleClass="winner-highlight"/>
+                <Label fx:id="lblCountdown" text="Thời gian kết thúc: Đang cập nhật..." styleClass="time-highlight"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="10">
+            <padding><Insets top="10" right="20" bottom="10" left="20"/></padding>
+            <Label text="BIỂU ĐỒ DIỄN BIẾN GIÁ THEO THỜI GIAN THỰC (REALTIME CURVE)" styleClass="section-title"/>
+            <LineChart fx:id="priceLineChart" prefHeight="320" createSymbols="true">
+                <xAxis>
+                    <CategoryAxis label="Mốc thời gian" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Giá đặt (VNĐ)" />
+                </yAxis>
+            </LineChart>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="25" styleClass="control-panel">
+            <padding><Insets top="15" right="20" bottom="20" left="20"/></padding>
+            <!-- Panel Đấu giá thủ công -->
+            <VBox spacing="8" styleClass="panel-box">
+                <Label text="ĐẤU GIÁ THỦ CÔNG" styleClass="panel-title"/>
+                <HBox spacing="10">
+                    <TextField fx:id="txtBidAmount" promptText="Nhập mức giá..." prefWidth="140"/>
+                    <Button text="Đặt giá ngay" onAction="#handlePlaceBid" styleClass="bid-btn"/>
+                </HBox>
+            </VBox>
+
+            <!-- Panel Cài đặt Auto-Bidding -->
+            <VBox spacing="8" styleClass="panel-box" HBox.hgrow="ALWAYS">
+                <Label text="CÀI ĐẶT ĐẤU GIÁ TỰ ĐỘNG (AUTO-BIDDING)" styleClass="panel-title"/>
+                <HBox spacing="10">
+                    <TextField fx:id="txtMaxAutoBid" promptText="Giá tối đa (maxBid)" prefWidth="160"/>
+                    <TextField fx:id="txtAutoIncrement" promptText="Bước giá" prefWidth="120"/>
+                    <Button text="Kích hoạt Auto-Bid" onAction="#handleRegisterAutoBid" styleClass="autobid-btn"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </bottom>
+</BorderPane>
